@@ -65,6 +65,7 @@ def main():
         create_instance(args.name)
     else:
         print('Image name is not supported.')
+        exit()
     else:
         print("Script requires at least one argument")
         print(parser.print_help())
