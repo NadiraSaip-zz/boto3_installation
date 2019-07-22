@@ -33,7 +33,7 @@ def get_instances():
             print('InstanceId', item['Instances'][0]['InstanceId'])
             print('SubnetId', item['Instances'][0]['SubnetId'])
 
-def create_instance(args.name, 1, 1, instancetype, key):
+def create_instance(name):
     image_id = None 
     
     if name in images.keys():
@@ -64,7 +64,7 @@ def main():
         if args.name in images.keys():
             key = args.key if args.key else 'deployer-key1'
             instancetype = args.type if args.type else 't2.nano'
-            create_instance(args.name, 1, 1, instancetype, key)
+            create_instance(name)
             exit()
         else:
             print('Image name is not supported.')
