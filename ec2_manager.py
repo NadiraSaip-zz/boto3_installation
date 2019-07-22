@@ -5,7 +5,7 @@ import argparse
 ec2 = boto3.client('ec2')
 images = {
     'aws-linux'  : 'ami-0bbc25e23a7640b9b',
-    'centos' : 'ami-0ff760d16d9497662'
+    'centos' : 'ami-0ff760d16d9497662',
 }
 
 parser = argparse.ArgumentParser(description='Script to manager EC2 instances.')
