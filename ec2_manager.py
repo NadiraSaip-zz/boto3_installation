@@ -57,27 +57,25 @@ def main():
         exit()
         
     if args.name in images.keys():
+        key = args.key if args.key else 'deployer-key1'
+            instancetype = args.type if args.type else 't2.nano'
+            create_instance(args.name, 1, 1, instancetype, key)
+            exit()
+
         create_instance(args.name)
     else:
         print('Image name is not supported.')
+    else:
+        print("Script requires at least one argument")
+        print(parser.print_help())
+        exit()
     
     if(args.delete):
         deleteInstance(args.delete)
         exit()
     
-    if(args.name(sad)
-        if (args.name in images.keys()):
-            key = args.key if args.key else 'deployer-key1'
-            instancetype = args.type if args.type else 't2.nano'
-            createInstance(args.name, 1, 1, instancetype, key)
-            exit()
-        else:
-            print('Image name is not supported.')
-            exit()
-    else:
-        print("Script requires at least one argument")
-        print(parser.print_help())
-        exit()
+    
+    
 
 if __name__ == "__main__" :
     main()
