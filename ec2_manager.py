@@ -50,7 +50,7 @@ def deleteInstance(instances):
     response = ec2.terminate_instances(
         InstanceIds=instances,
         #DryRun=True|False
-    
+    )
 def main():
     if args.get:
         get_instances()
@@ -78,9 +78,6 @@ def main():
         print("Script requires at least one argument")
         print(parser.print_help())
         exit()
-
-    
-
 
 if __name__ == "__main__" :
     main()
