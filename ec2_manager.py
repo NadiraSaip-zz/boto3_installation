@@ -58,9 +58,9 @@ def main():
         
     if args.name in images.keys():
         key = args.key if args.key else 'deployer-key1'
-            instancetype = args.type if args.type else 't2.nano'
-            create_instance(args.name, 1, 1, instancetype, key)
-            exit()
+        instancetype = args.type if args.type else 't2.nano'
+        create_instance(args.name, 1, 1, instancetype, key)
+        exit()
 
         create_instance(args.name)
     else:
