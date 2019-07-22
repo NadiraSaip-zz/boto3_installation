@@ -9,12 +9,19 @@ images = {
 }
 
 parser = argparse.ArgumentParser(description='Script to manager EC2 instances.')
+arguments = parser.add_argument_group('Arguments')
+# required = parser.add_argument_group('required group')
+# required.add_argument('-n', '--name', help='Please provide image name for ec2 instances.', required=False)
+# notrequired = parser.add_argument_group('not required group')
+# notrequired.add_argument('-g', '--get', help='Please provide image id', required=False)
+arguments.add_argument('-n', '--name', help='Image name to be used for the instance', required=False)
+arguments.add_argument('-l', '--list', help='List running instances', action='store_true', required=False)
+arguments.add_argument('-k', '--key', help='Key name', required=False)
+arguments.add_argument('-t', '--type', help='Instance type', required=False)
+arguments.add_argument('-d', '--delete', nargs='+', help='ID of the instance to delete', required=False)
+args = parser.parse_args()
 
-required = parser.add_argument_group('required group')
-required.add_argument('-n', '--name', help='Please provide image name for ec2 instances.', required=False)
 
-notrequired = parser.add_argument_group('not required group')
-notrequired.add_argument('-g', '--get', help='Please provide image id', required=False)
 args = parser.parse_args()
 
 
@@ -38,6 +45,11 @@ def create_instance(name):
         ec2 = boto3.resource('ec2')
         ec2.create_instances(ImageId=image_id, MinCount=1, MaxCount=1, InstanceType='t2.micro')
 
+def deleteInstance(instances):
+    ec2 = boto3.client('ec2')
+    response = ec2.terminate_instances(
+        InstanceIds=instances,
+        #DryRun=True|False
     
 def main():
     if args.get:
@@ -48,6 +60,25 @@ def main():
         create_instance(args.name)
     else:
         print('Image name is not supported.')
+    
+    if(args.delete):
+        deleteInstance(args.delete)
+        exit()
+    
+    if(args.name(sad)
+        if (args.name in images.keys()):
+            key = args.key if args.key else 'deployer-key1'
+            instancetype = args.type if args.type else 't2.nano'
+            createInstance(args.name, 1, 1, instancetype, key)
+            exit()
+        else:
+            print('Image name is not supported.')
+            exit()
+    else:
+        print("Script requires at least one argument")
+        print(parser.print_help())
+        exit()
+
     
 
 
