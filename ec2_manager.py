@@ -33,7 +33,7 @@ def get_instances():
             print('InstanceId', item['Instances'][0]['InstanceId'])
             print('SubnetId', item['Instances'][0]['SubnetId'])
 
-def create_instance(name,1,1,instancetype, key):
+def create_instance(args.name, 1, 1, instancetype, key):
     image_id = None 
     
     if name in images.keys():
